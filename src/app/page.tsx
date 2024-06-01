@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import PageTitle from "@/components/PageTitle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import {
   Activity,
   CreditCard,
@@ -16,6 +17,12 @@ interface CardProps {
   amount: string;
   description: string;
   icons: ForwardRefExoticComponent<LucideProps & RefAttributes<SVGSVGElement>>;
+}
+
+interface SalesDataPops {
+  avatarImage: string;
+  avatarEmail: string;
+  profitData: number;
 }
 
 const cardContentData: CardProps[] = [
@@ -96,6 +103,34 @@ const chartsData = [
   },
 ];
 
+const salesData: SalesDataPops[] = [
+  {
+    avatarImage: "Cali",
+    avatarEmail: "Cali@yahoo.com",
+    profitData: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    avatarImage: "Jasper",
+    avatarEmail: "Jasper@hotmail.com",
+    profitData: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    avatarImage: "Fluffy",
+    avatarEmail: "Fluffy@aol.com",
+    profitData: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    avatarImage: "Maggie",
+    avatarEmail: "Maggie@outlook.com",
+    profitData: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    avatarImage: "Leo",
+    avatarEmail: "Leo@protonmail.com",
+    profitData: Math.floor(Math.random() * 5000) + 1000,
+  },
+];
+
 export default function Home() {
   return (
     <div className="flex w-full flex-col gap-2">
@@ -125,8 +160,8 @@ export default function Home() {
         <Card className="shadow-md shadow-blue-600">
           <CardHeader className="font-semibold text-gray-400">
             OverView
-            </CardHeader>
-            <CardContent>
+          </CardHeader>
+          <CardContent>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={chartsData}>
                 <XAxis
@@ -151,13 +186,37 @@ export default function Home() {
                 />
               </BarChart>
             </ResponsiveContainer>
-            </CardContent>
-         
+          </CardContent>
         </Card>
         <Card className="shadow-md shadow-blue-600">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="font-semibold text-gray-400">
             Recent Sales
+            <p className="text-sm font-normal">
+              You made 265 sales this month.
+            </p>
           </CardHeader>
+          <CardContent>
+            {salesData.map((data, key) => (
+              <div key={key} className="flex gap-2 mt-4 justify-between items-center shadow-sm shadow-blue-600">
+                <div className="flex flex-1 gap-2">
+                  <Avatar className="h-9 w-9 rounded-xl mt-2 ml-1 bg-gray-300">
+                    <AvatarImage
+                      src={`https://api.dicebear.com/8.x/open-peeps/svg?seed=${data.avatarImage}`}
+                      alt="@shadcn"
+                    />
+                    <AvatarFallback>{data.avatarImage}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col ">
+                    <p className=" font-semibold ">{data.avatarImage}</p>
+                    <p className="text-ellipsis  text-gray-400">
+                      {data.avatarEmail}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-2xl font-bold"> +₹ {data.profitData}</p>
+              </div>
+            ))}
+          </CardContent>
         </Card>
       </section>
     </div>
