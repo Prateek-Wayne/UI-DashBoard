@@ -1,3 +1,4 @@
+"use client"
 import PageTitle from "@/components/PageTitle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -8,6 +9,7 @@ import {
   User,
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 interface CardProps {
   label: string;
@@ -43,6 +45,57 @@ const cardContentData: CardProps[] = [
   },
 ];
 
+const chartsData = [
+  {
+    name: "Jan",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Feb",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Mar",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Apr",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "May",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Jun",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Jul",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Aug",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Sep",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Oct",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Nov",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Dec",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+];
+
 export default function Home() {
   return (
     <div className="flex w-full flex-col gap-2">
@@ -50,7 +103,7 @@ export default function Home() {
       {/* cards */}
       <section className=" pt-8 grid w-full  gap-4 md:grid-cols-2 lg:grid-cols-4 ">
         {cardContentData.map((data, key) => (
-          <Card key={key}>
+          <Card key={key} className="shadow-md shadow-blue-600">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 {data.label}
@@ -69,12 +122,39 @@ export default function Home() {
       </section>
       {/* charts */}
       <section className="grid gap-4 lg:grid-cols-2">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <Card className="shadow-md shadow-blue-600">
+          <CardHeader className="font-semibold text-gray-400">
             OverView
-          </CardHeader>
+            </CardHeader>
+            <CardContent>
+            <ResponsiveContainer width="100%" height={350}>
+              <BarChart data={chartsData}>
+                <XAxis
+                  dataKey="name"
+                  stroke="#888888"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  stroke="#888888"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
+                  tickFormatter={(value) => `$${value}`}
+                />
+                <Bar
+                  dataKey="total"
+                  fill="currentColor"
+                  radius={[4, 4, 0, 0]}
+                  className="fill-primary"
+                />
+              </BarChart>
+            </ResponsiveContainer>
+            </CardContent>
+         
         </Card>
-        <Card>
+        <Card className="shadow-md shadow-blue-600">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             Recent Sales
           </CardHeader>
