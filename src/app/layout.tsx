@@ -19,14 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn('min-h-screen w-full flex',inter.className, {
+        className={cn('min-h-screen flex',inter.className, {
           "debug-screens": process.env.NODE_ENV === "development",
         })}
       >
         {/* SideBar of Dashboard  */}
         <SideBar/>
         {/* Main Page of Dashboard  */}
-        <div className="p-8 w-full flex">{children}</div>
+        <div className="p-8 w-full">{children}</div>
       </body>
     </html>
   );
