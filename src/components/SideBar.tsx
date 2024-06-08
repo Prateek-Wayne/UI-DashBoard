@@ -11,14 +11,17 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import {useWindowWidth } from "@react-hook/window-size";
 
 type Props = {};
 
 export default function SideBar({}: Props) {
   const [collapsed, setCollapsed] = useState(false);
+  const width=useWindowWidth();
+  const mobileWidth=width<768;
   return (
     <div className="border-r-2 border-blue-300 relative pt-24  shadow-xl shadow-blue-700 pb-10">
-      <div className="absolute top-6 right-[-24px]">
+      {!mobileWidth&&<div className="absolute top-6 right-[-24px]">
         {collapsed ? (
           <Button
             variant="secondary"
@@ -40,9 +43,9 @@ export default function SideBar({}: Props) {
             <ChevronRight />
           </Button>
         )}
-      </div>
+      </div>}
       <Nav
-        isCollapsed={collapsed}
+        isCollapsed={mobileWidth?true:collapsed}
         links={[
           {
             title: "Dashboard",
