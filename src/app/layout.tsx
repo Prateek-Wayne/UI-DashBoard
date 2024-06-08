@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import SideBar from "@/components/SideBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn('min-h-screen w-full flex',inter.className, {
+          "debug-screens": process.env.NODE_ENV === "development",
+        })}
+      >
+        {/* SideBar of Dashboard  */}
+        <SideBar/>
+        {/* Main Page of Dashboard  */}
+        <div className="p-8 w-full flex">{children}</div>
+      </body>
     </html>
   );
 }
