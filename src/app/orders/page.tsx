@@ -62,8 +62,7 @@ const orderData: orderData[] = [
 ];
 
 
-
-export const columns: ColumnDef<orderData>[] = [
+const columns: ColumnDef<orderData>[] = [
   {
     accessorKey: "orderId",
     header: "OrderId"

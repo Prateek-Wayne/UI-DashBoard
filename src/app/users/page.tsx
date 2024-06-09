@@ -97,7 +97,7 @@ function generateRandomImage(): string {
   return `https://api.dicebear.com/8.x/open-peeps/svg?seed=${randomImage}`;
 }
 
-export const columns: ColumnDef<userData>[] = [
+const columns: ColumnDef<userData>[] = [
   {
     accessorKey: "name",
     header: "Name",

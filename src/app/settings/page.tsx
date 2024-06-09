@@ -34,7 +34,7 @@ const settingData: settingDataType[] = [
 
 
 
-export const columns: ColumnDef<settingDataType>[] = [
+const columns: ColumnDef<settingDataType>[] = [
   {
     accessorKey: "category",
     header: "Category"
