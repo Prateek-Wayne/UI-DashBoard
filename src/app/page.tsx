@@ -197,7 +197,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             {salesData.map((data, key) => (
-              <div key={key} className="flex gap-2 mt-4 justify-between items-center shadow-sm shadow-blue-600">
+              <div key={key} className="flex mt-4 justify-between items-center shadow-sm shadow-blue-600 flex-col md:flex-row">
                 <div className="flex flex-1 gap-2">
                   <Avatar className="h-9 w-9 rounded-xl mt-2 ml-1 bg-gray-300">
                     <AvatarImage
@@ -206,14 +206,14 @@ export default function Home() {
                     />
                     <AvatarFallback>{data.avatarImage}</AvatarFallback>
                   </Avatar>
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col  ">
                     <p className=" font-semibold ">{data.avatarImage}</p>
-                    <p className="text-ellipsis  text-gray-400">
+                    <p className=" text-sm text-gray-400  text-ellipsis overflow-hidden">
                       {data.avatarEmail}
                     </p>
                   </div>
                 </div>
-                <p className="text-2xl font-bold"> +₹ {data.profitData}</p>
+                <p className="text-1xl font-bold"> +₹{data.profitData}</p>
               </div>
             ))}
           </CardContent>
