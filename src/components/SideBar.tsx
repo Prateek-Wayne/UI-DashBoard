@@ -49,28 +49,28 @@ export default function SideBar({}: Props) {
         links={[
           {
             title: "Dashboard",
-            label: "2",
+            label: "",
             icon: LayoutDashboardIcon,
             variant: "default",
             href: "/",
           },
           {
             title: "User",
-            label: "9",
+            label: "",
             icon: User,
             variant: "ghost",
             href: "/users",
           },
           {
             title: "Orders",
-            label: "5",
+            label: "",
             icon: SendToBack,
             variant: "ghost",
             href: "/orders",
           },
           {
             title: "Settings",
-            label: "23",
+            label: "",
             icon: Settings,
             variant: "ghost",
             href: "/settings",

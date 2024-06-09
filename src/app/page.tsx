@@ -41,13 +41,13 @@ const cardContentData: CardProps[] = [
   {
     label: "Sales",
     amount: "↗30000",
-    description: "This is the amount of sales",
+    description: "+19% from last month",
     icons: CreditCard,
   },
   {
-    label: "Sales",
+    label: "Active Now",
     amount: "30000",
-    description: "This is the amount of sales",
+    description: "+201 since last hour",
     icons: Activity,
   },
 ];

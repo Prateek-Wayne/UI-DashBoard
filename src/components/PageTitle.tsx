@@ -8,7 +8,7 @@ type Props = {
 
 const PageTitle = ({title,className}: Props) => {
   return (
-    <div className={cn('text-2xl font-semibold',className)}>
+    <div className={cn('text-2xl font-semibold text-gray-500',className)}>
         {title}
     </div>
   )

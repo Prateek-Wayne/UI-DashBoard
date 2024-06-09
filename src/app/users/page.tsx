@@ -102,7 +102,7 @@ export const columns: ColumnDef<userData>[] = [
     accessorKey: "name",
     header: "Name",
     cell: ({ row }) => (
-      <div className="flex flex-1 gap-2">
+      <div className="flex flex-1 gap-2 items-center">
         <Avatar className="h-9 w-9 rounded-xl mt-2 ml-1 bg-gray-300">
           <AvatarImage src={generateRandomImage()} alt="@shadcn" />
         </Avatar>
@@ -133,7 +133,9 @@ const Users = (props: Props) => {
     <div className="flex w-full flex-col gap-2">
       <PageTitle title="Users" />
       {/* Data Table for Users... */}
+      <div className="shadow-lg shadow-blue-500">
       <DataTable columns={columns} data={users} />
+      </div>
     </div>
   );
 };
